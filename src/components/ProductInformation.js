@@ -2,14 +2,21 @@ import React from "react";
 import "../styles.scss";
 import StyleSelector from "./StyleSelector";
 import AddToCart from "./AddToCart";
-//import StaticStars from "../ratings-reviews/static-stars.jsx";
 
-const ProductInformation = ({ productInfo, styles, currentStyle }) => {
+const ProductInformation = ({
+  productInfo,
+  styles,
+  currentStyle,
+  handleStyleChange,
+  handlePhotoChange,
+  stars,
+}) => {
   return (
     <div className="product-information">
       <div className="information-holder">
         <div className="rating">
           <div className="row">
+            {stars ? stars : <div className="no-stars-prop">stars go here</div>}
             <a href="#reviews">Read all reviews</a>
           </div>
         </div>
@@ -30,7 +37,12 @@ const ProductInformation = ({ productInfo, styles, currentStyle }) => {
           )}
         </div>
       </div>
-      <StyleSelector styles={styles} currentStyle={currentStyle} />
+      <StyleSelector
+        styles={styles}
+        currentStyle={currentStyle}
+        handleStyleChange={handleStyleChange}
+        handlePhotoChange={handlePhotoChange}
+      />
       <AddToCart styles={styles} currentStyle={currentStyle} />
     </div>
   );

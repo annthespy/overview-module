@@ -1,5 +1,18 @@
 $primary-color: #333;
 
+.no-props {
+  font-family: "adobe-clean", sans-serif;
+  font-size: 22px;
+  height: 500px;
+  width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: lightgray;
+}
+
 .overview-component {
   height: 800px;
   position: relative;
@@ -353,4 +366,8 @@ $primary-color: #333;
 }
 #features {
   margin-left: 20px;
+}
+
+.no-stars-prop {
+  color: red;
 }

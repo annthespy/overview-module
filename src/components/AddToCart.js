@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles.scss";
 // import { IoIosArrowDown } from "react-icons/io";
-import { AiOutlinePlus, AiOutlineStar } from "react-icons/ai";
+import { AiOutlineStar } from "react-icons/ai";
 
 const AddToCart = ({ styles, currentStyle }) => {
   return (
@@ -18,9 +18,7 @@ const AddToCart = ({ styles, currentStyle }) => {
       <div className="add-to-bag">
         <button className="add-to-bag-box">
           ADD TO BAG
-          <span id="add-icon">
-            <AiOutlinePlus />
-          </span>
+          <span id="add-icon"></span>
         </button>
         <button className="add-to-favorites">
           <AiOutlineStar />

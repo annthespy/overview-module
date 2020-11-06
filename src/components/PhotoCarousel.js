@@ -5,7 +5,7 @@ import { IoIosArrowDown } from "react-icons/io";
 const PhotoCarousel = ({ currentStyle }) => {
   return (
     <div className="photo-carousel">
-      <span
+      {/* <span
         alt="photo_of_the_product"
         id="photo-1"
         style={{
@@ -42,7 +42,7 @@ const PhotoCarousel = ({ currentStyle }) => {
       />
       <span id="arrow-down">
         <IoIosArrowDown />
-      </span>
+      </span> */}
     </div>
   );
 };
