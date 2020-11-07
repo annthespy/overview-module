@@ -10,7 +10,7 @@ This component renders
 - product information
 - style selectors
 
-from the external API.
+using data from the external API.
 
 ## Installation
 
