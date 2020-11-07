@@ -10,7 +10,7 @@ This component renders
 - product information
 - style selectors
 
-from the external API.
+using data from the external API.
 
 ## Installation
 
@@ -24,7 +24,7 @@ Import Overview into your top level component, render it and pass down the props
 
 #### Required props
 
-- `apiIP` : String (`"http://3.21.164.220"`)
+- `apiIP` : String
 - `productId` : Number
 
 #### Optional props
