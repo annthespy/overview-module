@@ -16,6 +16,6 @@ ehthumbs.db
 Thumbs.db
 
 # Dist folder
-dist/*
+dist
 lib
 static
