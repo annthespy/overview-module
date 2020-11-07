@@ -9,7 +9,8 @@ This component renders
 - photo gallery
 - product information
 - style selectors
-  from the external API.
+
+from the external API.
 
 ## Installation
 
