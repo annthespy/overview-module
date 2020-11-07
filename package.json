@@ -1,6 +1,6 @@
 {
-  "name": "FECoverview",
-  "version": "1.0.0",
+  "name": "overview-module",
+  "version": "1.0.1",
   "description": "Overview component for FEC project ",
   "main": "index.js",
   "keywords": [],
@@ -40,7 +40,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/annthespy/overview-module.git"
+    "url": "git+https://github.com/annthespy/overview-module.git"
   },
   "bugs": {
     "url": "https://github.com/annthespy/overview-module/issues"
