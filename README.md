@@ -1,31 +1,45 @@
-# overview
+# Overview Module
 
-Empty project.
+Overview Module is a React component for HackReactor's Front-end Capstone Project.
 
-## Building and running on localhost
+## Features
 
-First install dependencies:
+This component renders
 
-```sh
-npm install
-```
+- photo gallery
+- product information
+- style selectors
+  from the external API.
 
-To create a production build:
-
-```sh
-npm run build-prod
-```
-
-To create a development build:
+## Installation
 
 ```sh
-npm run build-dev
+npm install overview-module
 ```
 
-## Running
+## Usage
 
-Open the file `dist/index.html` in your browser
+Import Overview into your top level component, render it and pass down the props.
 
-## Credits
+#### Required props
 
-Made with [createapp.dev](https://createapp.dev/)
+- `apiIP` : String (`"http://3.21.164.220"`)
+- `productId` : Number
+
+#### Optional props
+
+- `stars` : a component
+
+#### Example
+
+```javascript
+import React from "react";
+import Overview from "overview-module";
+import Stars from "./components/Stars";
+
+const App = () => {
+  return (
+    <Overview apiIP={"http://3.21.164.220"} productId={1} stars={<Stars />} />
+  );
+};
+```

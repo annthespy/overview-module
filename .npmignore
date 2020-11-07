@@ -1,0 +1,39 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Dependency directories
+node_modules
+jspm_packages
+
+# Optional npm cache directory
+.npm
+.DS_Store
+
+# Setup
+.babelrc
+.babelrc.json
+.eslint
+.gitignore
+.vscode
+.npmrc
+.prettierrc
+.travis.yml
+package-lock.json
+jestconfig.json
+tsconfig.json
+
+# Static files
+config
+coverage
+docs
+public
+src
+static
+tests
