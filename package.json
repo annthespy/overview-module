@@ -1,5 +1,5 @@
 {
-  "name": "overview-module",
+  "name": "FECoverview",
   "version": "1.0.0",
   "description": "Overview component for FEC project ",
   "main": "index.js",
