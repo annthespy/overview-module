@@ -1,17 +1,57 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles.scss";
 // import { IoIosArrowDown } from "react-icons/io";
 import { AiOutlineStar } from "react-icons/ai";
 
-const AddToCart = ({ styles, currentStyle }) => {
+const AddToCart = ({ currentStyle }) => {
+  let skus = currentStyle.skus;
+  let newSkusObj = {};
+  for (var key in skus) {
+    if (!newSkusObj[skus[key]["size"]]) {
+      newSkusObj[skus[key]["size"]] = skus[key]["quantity"];
+    } else {
+      newSkusObj[skus[key]["size"]] += skus[key]["quantity"];
+    }
+  }
+  let skusArr = Object.entries(newSkusObj);
+
+  const [quantity, setQuantity] = useState("");
+
+  useEffect(() => {
+    setQuantity("");
+  }, [currentStyle.style_id]);
+
+  let quantityList = [];
+  var maxQuantity = quantity > 15 ? 15 : quantity;
+  for (var i = 1; i <= maxQuantity; i++) {
+    quantityList.push(<option key={i}>{i}</option>);
+  }
+
   return (
     <div className="add-to-cart">
       <div className="select-size">
-        <select className="select-size-box">
-          <option value="0">SELECT SIZE</option>
+        <select
+          className="select-size-box"
+          onChange={(e) => {
+            setQuantity(e.target.value);
+          }}
+        >
+          <option>SELECT SIZE</option>
+          {!skusArr.length ? (
+            <option>OUT OF STOCK</option>
+          ) : (
+            skusArr.map((sku, i) => {
+              return (
+                <option key={i} value={sku[1]}>
+                  {sku[0]}
+                </option>
+              );
+            })
+          )}
         </select>
+
         <select className="quantity-box">
-          <option value="0">1</option>
+          {quantity === "" ? <option>-</option> : quantityList}
         </select>
       </div>
 

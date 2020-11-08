@@ -43,7 +43,7 @@ const ProductInformation = ({
         handleStyleChange={handleStyleChange}
         handlePhotoChange={handlePhotoChange}
       />
-      <AddToCart styles={styles} currentStyle={currentStyle} />
+      <AddToCart currentStyle={currentStyle} />
     </div>
   );
 };
