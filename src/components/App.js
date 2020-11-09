@@ -9,6 +9,7 @@ import Description from "./Description";
 import axios from "axios";
 //TODO remove example data
 import exampleData from "../data";
+import { image } from "../Image";
 
 class App extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends React.Component {
       styles: [], //exampleData.styles.results,
       currentStyle: {},
       currentPhoto: "",
+      photos: [],
     };
 
     this.handleViewChange = this.handleViewChange.bind(this);
@@ -26,6 +28,7 @@ class App extends React.Component {
     this.handlePhotoChange = this.handlePhotoChange.bind(this);
     this.getCurrentProductInfo = this.getCurrentProductInfo.bind(this);
     this.getStyles = this.getStyles.bind(this);
+    this.transformPhotoData = this.transformPhotoData.bind(this);
   }
 
   componentDidMount() {
@@ -51,10 +54,12 @@ class App extends React.Component {
           currentStyle: data.results[0],
           currentPhoto: data.results[0].photos[0].url
             ? data.results[0].photos[0].url
-            : "../../dist/no-image.jpg",
+            : image,
+          photos: data.results[0].photos,
         });
       })
-      .catch((err) => console.error(err));
+      .then(() => this.transformPhotoData())
+      .catch((err) => console.error("cannot get styles", err));
   }
 
   handleViewChange(type) {
@@ -62,11 +67,27 @@ class App extends React.Component {
   }
 
   handleStyleChange(style) {
-    this.setState({ currentStyle: style });
+    this.setState({ currentStyle: style, photos: style.photos });
   }
 
   handlePhotoChange(url) {
     this.setState({ currentPhoto: url });
+  }
+
+  transformPhotoData() {
+    this.state.photos.map((photo) => {
+      if (photo.url === null || photo.url === undefined) {
+        photo.url = image;
+      }
+    });
+    this.state.styles.map((style) => {
+      if (
+        style.photos[0].thumbnail_url === null ||
+        style.photos[0].thumbnail_url === undefined
+      ) {
+        style.photos[0].thumbnail_url = image;
+      }
+    });
   }
 
   render() {
@@ -80,34 +101,45 @@ class App extends React.Component {
       );
     else {
       return (
-        <div className="overview-component">
-          {this.state.view === "main" ? (
-            <>
-              <CurrentPhoto
+        <div>
+          <header>
+            <p className="announcement">
+              <em>SITE-WIDE ANNOUNCEMENT MESSAGE!</em> &mdash; SALE / DISCOUNT{" "}
+              <strong>OFFER</strong>
+              &mdash; <a href="">NEW PRODUCT HIGHLIGHT</a>{" "}
+            </p>
+          </header>
+          <div className="overview-component">
+            {this.state.view === "main" ? (
+              <>
+                <CurrentPhoto
+                  handleViewChange={this.handleViewChange}
+                  handlePhotoChange={this.handlePhotoChange}
+                  currentPhoto={this.state.currentPhoto}
+                  photos={this.state.photos}
+                />
+                <ProductInformation
+                  handlePhotoChange={this.handlePhotoChange}
+                  handleStyleChange={this.handleStyleChange}
+                  productInfo={this.state.productInfo}
+                  styles={this.state.styles}
+                  currentStyle={this.state.currentStyle}
+                  stars={this.props.stars}
+                />
+              </>
+            ) : (
+              <ExpandedPhoto
                 handleViewChange={this.handleViewChange}
-                currentStyle={this.state.currentStyle}
+                handlePhotoChange={this.handlePhotoChange}
+                photos={this.state.photos}
                 currentPhoto={this.state.currentPhoto}
               />
-              <ProductInformation
-                handlePhotoChange={this.handlePhotoChange}
-                handleStyleChange={this.handleStyleChange}
-                productInfo={this.state.productInfo}
-                styles={this.state.styles}
-                currentStyle={this.state.currentStyle}
-                stars={this.props.stars}
-              />
-            </>
-          ) : (
-            <ExpandedPhoto
-              handleViewChange={this.handleViewChange}
-              currentStyle={this.state.currentStyle}
-              currentPhoto={this.state.currentPhoto}
+            )}
+            <Description
+              productInfo={this.state.productInfo}
+              features={this.state.productInfo.features}
             />
-          )}
-          <Description
-            productInfo={this.state.productInfo}
-            features={this.state.productInfo.features}
-          />
+          </div>
         </div>
       );
     }

@@ -1,21 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles.scss";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { GrFormClose } from "react-icons/gr";
 import PhotoCarousel from "./PhotoCarousel";
 
-const ExpandedPhoto = ({ handleViewChange, currentStyle, currentPhoto }) => {
+const ExpandedPhoto = ({
+  handleViewChange,
+  photos,
+  currentPhoto,
+  handlePhotoChange,
+}) => {
+  const [currentPhotoIndex, setIndex] = useState(0);
+
   return (
     <div className="expanded-photo-container">
       <div id="current-photo2">
         <img alt="enlarged_photo_of_the_chosen_product" src={currentPhoto} />
       </div>
-      <PhotoCarousel currentStyle={currentStyle} />
+      <PhotoCarousel photos={photos} handlePhotoChange={handlePhotoChange} />
       <span id="left-arrow">
-        <FaArrowLeft />
+        <FaArrowLeft
+          onClick={() => {
+            handlePhotoChange(photos[currentPhotoIndex - 1].url);
+            setIndex(currentPhotoIndex - 1);
+          }}
+        />
       </span>
       <span id="right-arrow">
-        <FaArrowRight />
+        <FaArrowRight
+          onClick={() => {
+            handlePhotoChange(photos[currentPhotoIndex + 1].url);
+            setIndex(currentPhotoIndex + 1);
+          }}
+        />
       </span>
       <span id="fold">
         <GrFormClose onClick={() => handleViewChange("main")} />
