@@ -8,7 +8,6 @@ const StyleSelector = ({
   handleStyleChange,
   handlePhotoChange,
 }) => {
-  // console.log("style in styleseklector: ", styles);
   return (
     <div className="style-selector">
       <div className="style-type">STYLE > {currentStyle.name}</div>

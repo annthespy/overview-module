@@ -1,22 +1,30 @@
 import React, { useState } from "react";
 import "../styles.scss";
-//import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { image } from "../Image";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { image } from "./Image";
 
-const PhotoCarousel = ({ photos, handlePhotoChange }) => {
+const PhotoCarousel = ({ photos, handlePhotoChange, currentPhoto }) => {
   const [photoIndex, setIndex] = useState(0);
+
+  if (currentPhoto === image) {
+    return null;
+  }
 
   if (photos.length)
     return (
       <div className="photo-carousel">
-        {/* <span id="">
-          <IoIosArrowUp onClick={() => setIndex(photoIndex - 1)} />
-        </span> */}
+        {photoIndex > 0 ? (
+          <span id="arrow-up">
+            <IoIosArrowUp onClick={() => setIndex(photoIndex - 1)} />
+          </span>
+        ) : null}
         <span
           alt="photo_of_the_product"
           id="photo-1"
           style={{
-            backgroundImage: `url(${photos[photoIndex].url})`,
+            backgroundImage: photos[photoIndex]
+              ? `url(${photos[photoIndex].url})`
+              : `url(${image})`,
           }}
           onClick={() => handlePhotoChange(photos[photoIndex].url)}
         />
@@ -60,30 +68,14 @@ const PhotoCarousel = ({ photos, handlePhotoChange }) => {
           }}
           onClick={() => handlePhotoChange(photos[photoIndex + 4].url)}
         />
-        {/* <span id="arrow-down">
-          <IoIosArrowDown onClick={() => setIndex(photoIndex + 1)} />
-        </span> */}
+        {photoIndex < photos.length - 5 ? (
+          <span id="arrow-down">
+            <IoIosArrowDown onClick={() => setIndex(photoIndex + 1)} />
+          </span>
+        ) : null}
       </div>
     );
   else return null;
 };
 
 export default PhotoCarousel;
-
-// {
-//   currentStyle.photos[0].url ? (
-//     <div
-//       id="photo-2"
-//       style={{
-//         backgroundImage: `url(${currentStyle.photos[0].url})`,
-//       }}
-//     ></div>
-//   ) : (
-//     <div
-//       id="photo-2"
-//       style={{
-//         backgroundImage: `url("https://i.imgur.com/9i4bKQ6.png")`,
-//       }}
-//     ></div>
-//   );
-// }
