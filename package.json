@@ -1,6 +1,6 @@
 {
   "name": "overview-module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Overview component for HackReactor's Front-end Capstone Project",
   "main": "./lib/index.js",
   "repository": {
