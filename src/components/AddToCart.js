@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../styles.scss";
-// import { IoIosArrowDown } from "react-icons/io";
 import { AiOutlineStar } from "react-icons/ai";
 
 const AddToCart = ({ currentStyle }) => {
@@ -14,7 +13,6 @@ const AddToCart = ({ currentStyle }) => {
     }
   }
   let skusArr = Object.entries(newSkusObj);
-
   const [quantity, setQuantity] = useState("");
 
   useEffect(() => {
@@ -31,12 +29,13 @@ const AddToCart = ({ currentStyle }) => {
     <div className="add-to-cart">
       <div className="select-size">
         <select
+          value={quantity}
           className="select-size-box"
           onChange={(e) => {
             setQuantity(e.target.value);
           }}
         >
-          <option>SELECT SIZE</option>
+          <option value="">SELECT SIZE</option>
           {!skusArr.length ? (
             <option>OUT OF STOCK</option>
           ) : (

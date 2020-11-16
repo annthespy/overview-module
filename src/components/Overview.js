@@ -4,20 +4,16 @@ import CurrentPhoto from "./CurrentPhoto";
 import ExpandedPhoto from "./ExpandedPhoto";
 import ProductInformation from "./ProductInformation";
 import Description from "./Description";
-//import getCurrentProductInfo from "../apiHelpers/getCurrentProductInfo";
-//import getStyles from "../apiHelpers/getStyles";
 import axios from "axios";
-//TODO remove example data
-import exampleData from "../data";
-import { image } from "../Image";
+import { image } from "./Image";
 
-class App extends React.Component {
+class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       view: "main",
-      productInfo: {}, //exampleData.info,
-      styles: [], //exampleData.styles.results,
+      productInfo: {},
+      styles: [],
       currentStyle: {},
       currentPhoto: "",
       photos: [],
@@ -42,7 +38,7 @@ class App extends React.Component {
       .then(({ data }) => {
         this.setState({ productInfo: data });
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error("cannot get product info: ", err));
   }
 
   getStyles(ip, id) {
@@ -59,7 +55,7 @@ class App extends React.Component {
         });
       })
       .then(() => this.transformPhotoData())
-      .catch((err) => console.error("cannot get styles", err));
+      .catch((err) => console.error("cannot get styles: ", err));
   }
 
   handleViewChange(type) {
@@ -87,6 +83,9 @@ class App extends React.Component {
       ) {
         style.photos[0].thumbnail_url = image;
       }
+      if (style.photos[0].url === null || style.photos[0].url === undefined) {
+        style.photos[0].url = image;
+      }
     });
   }
 
@@ -113,6 +112,7 @@ class App extends React.Component {
             {this.state.view === "main" ? (
               <>
                 <CurrentPhoto
+                  currentStyle={this.state.currentStyle}
                   handleViewChange={this.handleViewChange}
                   handlePhotoChange={this.handlePhotoChange}
                   currentPhoto={this.state.currentPhoto}
@@ -129,6 +129,7 @@ class App extends React.Component {
               </>
             ) : (
               <ExpandedPhoto
+                currentStyle={this.state.currentStyle}
                 handleViewChange={this.handleViewChange}
                 handlePhotoChange={this.handlePhotoChange}
                 photos={this.state.photos}
@@ -146,4 +147,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Overview;

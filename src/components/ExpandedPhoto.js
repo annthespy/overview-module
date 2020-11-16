@@ -17,23 +17,32 @@ const ExpandedPhoto = ({
       <div id="current-photo2">
         <img alt="enlarged_photo_of_the_chosen_product" src={currentPhoto} />
       </div>
-      <PhotoCarousel photos={photos} handlePhotoChange={handlePhotoChange} />
-      <span id="left-arrow">
-        <FaArrowLeft
-          onClick={() => {
-            handlePhotoChange(photos[currentPhotoIndex - 1].url);
-            setIndex(currentPhotoIndex - 1);
-          }}
-        />
-      </span>
-      <span id="right-arrow">
-        <FaArrowRight
-          onClick={() => {
-            handlePhotoChange(photos[currentPhotoIndex + 1].url);
-            setIndex(currentPhotoIndex + 1);
-          }}
-        />
-      </span>
+      <PhotoCarousel
+        photos={photos}
+        handlePhotoChange={handlePhotoChange}
+        currentPhoto={currentPhoto}
+        currentPhotoIndex={currentPhotoIndex}
+      />
+      {currentPhotoIndex > 0 ? (
+        <span id="left-arrow">
+          <FaArrowLeft
+            onClick={() => {
+              handlePhotoChange(photos[currentPhotoIndex - 1].url);
+              setIndex(currentPhotoIndex - 1);
+            }}
+          />
+        </span>
+      ) : null}
+      {currentPhotoIndex === photos.length - 1 ? null : (
+        <span id="right-arrow">
+          <FaArrowRight
+            onClick={() => {
+              handlePhotoChange(photos[currentPhotoIndex + 1].url);
+              setIndex(currentPhotoIndex + 1);
+            }}
+          />
+        </span>
+      )}
       <span id="fold">
         <GrFormClose onClick={() => handleViewChange("main")} />
       </span>

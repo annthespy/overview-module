@@ -2,7 +2,7 @@
   "name": "overview-module",
   "version": "1.0.0",
   "description": "Overview component for HackReactor's Front-end Capstone Project",
-  "main": "./src/components/App.js",
+  "main": "./src/components/Overview.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/annthespy/overview-module.git"
@@ -35,8 +35,6 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
     "react-icons": "^3.10.0",
     "sass": "^1.28.0"
   },
@@ -52,6 +50,8 @@
     "file-loader": "^6.2.0",
     "sass-loader": "^9.0.3",
     "style-loader": "^1.2.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "url-loader": "^4.1.1",
     "webpack": "^5.3.0",
     "webpack-cli": "^4.1.0"

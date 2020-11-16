@@ -15,17 +15,13 @@ const Description = ({ productInfo, features }) => {
       </div>
       <div className="features-box">
         <div id="features">
-          {features ? (
-            features.map((feature, i) => (
-              <div key={i}>
-                <GrCheckmark /> {feature.feature}: {feature.value}
-              </div>
-            ))
-          ) : (
-            <div>
-              <GrCheckmark /> No features
-            </div>
-          )}
+          {features
+            ? features.map((feature, i) => (
+                <div key={i}>
+                  <GrCheckmark /> {feature.feature}: {feature.value}
+                </div>
+              ))
+            : null}
         </div>
       </div>
     </div>
