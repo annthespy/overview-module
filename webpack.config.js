@@ -2,10 +2,12 @@ const webpack = require("webpack");
 const path = require("path");
 
 const config = {
-  entry: "./src/index.js",
+  mode: "production",
+  entry: "./src/components/Overview.js",
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, "lib"),
+    filename: "index.js",
+    libraryTarget: "commonjs2",
   },
   module: {
     rules: [
@@ -37,6 +39,9 @@ const config = {
   },
   resolve: {
     extensions: [".js", ".jsx"],
+  },
+  externals: {
+    react: "commonjs react",
   },
 };
 

@@ -28,6 +28,7 @@ jspm_packages
 package-lock.json
 jestconfig.json
 tsconfig.json
+webpack.config.js
 
 # Static files
 config
