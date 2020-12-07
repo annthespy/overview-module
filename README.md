@@ -1,3 +1,5 @@
+[![version](https://img.shields.io/npm/v/overview-module?color=g)]
+
 # Overview Module
 
 Overview Module is a React component for HackReactor's Front-end Capstone Project.
