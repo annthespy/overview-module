@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/npm/v/overview-module?color=g)]
+[![version](https://img.shields.io/npm/v/overview-module?color=g)](https://www.npmjs.com/package/overview-module)
 
 # Overview Module
 
