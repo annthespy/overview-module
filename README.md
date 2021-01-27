@@ -25,6 +25,7 @@ npm install overview-module
 ## Usage
 
 Import Overview into your top level component, render it and pass down the props.
+
 ![](demo/initial-load.jpg)
 
 #### Required props
